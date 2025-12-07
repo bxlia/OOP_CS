@@ -102,6 +102,64 @@ namespace Fraction
             inverted.Denominator = buffer;
             return inverted;
         }
+        public static Fraction operator ++(Fraction fraction)
+        {
+            fraction.Integer += 1;
+            return fraction;
+        }
+
+        public static Fraction operator --(Fraction fraction)
+        {
+            fraction.Integer -= 1;
+            return fraction;
+        }
+
+        public static bool operator ==(Fraction left, Fraction right)
+        {
+            Fraction left_copy = new Fraction(left);
+            Fraction right_copy = new Fraction(right);
+            left_copy.ToImproper();
+            right_copy.ToImproper();
+
+            left_copy.Reduce();
+            right_copy.Reduce();
+
+            return left_copy.Numerator == right_copy.Numerator &&
+                   left_copy.Denominator == right_copy.Denominator;
+        }
+
+        public static bool operator !=(Fraction left, Fraction right)
+        {
+            return !(left == right);
+        }
+
+        public static bool operator >(Fraction left, Fraction right)
+        {
+            Fraction left_copy = new Fraction(left);
+            Fraction right_copy = new Fraction(right);
+            left_copy.ToImproper();
+            right_copy.ToImproper();
+
+            int leftNumerator = left_copy.Numerator * right_copy.Denominator;
+            int rightNumerator = right_copy.Numerator * left_copy.Denominator;
+
+            return leftNumerator > rightNumerator;
+        }
+
+        public static bool operator <(Fraction left, Fraction right)
+        {
+            return right > left;
+        }
+
+        public static bool operator >=(Fraction left, Fraction right)
+        {
+            return (left > right) || (left == right);
+        }
+
+        public static bool operator <=(Fraction left, Fraction right)
+        {
+            return (left < right) || (left == right);
+        }
         public Fraction Reduce()
         {
             int more, less, rest = 0;

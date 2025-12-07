@@ -28,6 +28,7 @@ namespace Fraction
 #endif
             Fraction A = new Fraction(2, 3, 4);
             Fraction B = new Fraction(3, 4, 5);
+            Fraction D = new Fraction(1, 1, 2);
             Fraction C = A / B;
             A.Print();
             B.Print();
@@ -37,6 +38,17 @@ namespace Fraction
             A.Print();
             A /= B;
             A.Print();
+            Console.WriteLine(delimeter);
+            Console.Write("D = "); D.Print();
+            D++;
+            Console.Write("D++ = "); D.Print();
+            D--;
+            Console.Write("D-- = "); D.Print();
+            Console.WriteLine(delimeter);
+            Console.WriteLine($"A == B: {A == B}");
+            Console.WriteLine($"A != B: {A != B}");
+            Console.WriteLine($"A > B: {A > B}");
+            Console.WriteLine($"A < B: {A < B}");
         }
     }
 }
